@@ -1,18 +1,17 @@
-<h2>Simple Form</h2>
-
 <%= simple_form_for(@address) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :zipcode, as: :zipcode %>
-    <small style="display: none;" id="error">Error - Invalid zipcode</small>
-    <%= f.input :street, as: :street %>
-    <%= f.input :neighborhood, as: :neighborhood %>
-    <%= f.input :city, as: :city %>
-    <%= f.input :state, as: :state %>
+    <small style="display: none; color: red;" id="error">CEP é inválido</small>
+    <small style="display: none; color: green;" id="success">CEP é valido</small>
+    <%= f.input :zipcode, as: :zipcode, label: :CEP %>
+    <%= f.input :street, as: :street, label: 'Rua' %>
+    <%= f.input :neighborhood, as: :neighborhood, label: 'Bairro' %>
+    <%= f.input :city, as: :city, label: 'Cidade' %>
+    <%= f.input :state, as: :state_select, label: 'Estado', collection: states %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'btn-primary' %>
   </div>
 <% end %>

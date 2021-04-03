@@ -12,15 +12,23 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
+//= require bootstrap
 //= require turbolinks
 //= require autocomplete_zipcode
 //= require_tree .
 
-$(document).on("turbolinks:load", function() {
-  document.addEventListener('zipcode.error', function(e) {
-    $('#error').show()
-    setTimeout(function() {
-      $('#error').fadeOut(1000);
-    }, 5000);
+$(document).on("turbolinks:load", () => {
+  AutocompleteZipcode.mount({
+    onFail: (_, zipcodeEl) => {
+      $('#error').show();
+      $('#success').hide();
+      $(zipcodeEl).css('border', '1px solid red');
+    },
+    onSuccess: (_, zipcodeEl) => {
+      $('#success').show();
+      $('#error').hide();
+      $(zipcodeEl).css('border', '1px solid green');
+    },
   });
-})
+});
