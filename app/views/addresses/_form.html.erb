@@ -5,10 +5,10 @@
     <small style="display: none; color: red;" id="error">CEP é inválido</small>
     <small style="display: none; color: green;" id="success">CEP é valido</small>
     <%= f.input :zipcode, as: :zipcode, label: :CEP %>
-    <%= f.input :street, as: :street, label: 'Rua' %>
-    <%= f.input :neighborhood, as: :neighborhood, label: 'Bairro' %>
-    <%= f.input :city, as: :city, label: 'Cidade' %>
-    <%= f.input :state, as: :state_select, label: 'Estado', collection: states %>
+    <%= f.input :street, as: :street, label: 'Rua', input_html: { disabled: true } %>
+    <%= f.input :neighborhood, as: :neighborhood, label: 'Bairro', input_html: { disabled: true } %>
+    <%= f.input :city, as: :city, label: 'Cidade', input_html: { disabled: true } %>
+    <%= f.input :state, as: :state_select, label: 'Estado', collection: states, input_html: { disabled: true } %>
   </div>
 
   <div class="form-actions">
